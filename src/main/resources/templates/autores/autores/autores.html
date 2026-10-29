@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body {
+        background-color: white;
+    }
+</style>
+<body>
+    <h1>Lista de Autoras</h1>
+    <ul>
+        <li th:text="${autor.nome}"></li>
+    </ul>
+
+    <h1>Cadastrar Autor</h1>
+    <form th:action="@{/autores}" method="post">
+        <input type="text" name="nome" placeholder="Nome do Autor" />
+        <input type="text" name="nacionalidade" placeholder="Nacionalidade do Autor" />
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <a href="/inicio">Voltar para a página inicial</a>
+
+</body>
+</html>

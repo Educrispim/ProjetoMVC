@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmacao</title>
+</head>
+<style>
+    body {
+        background-color: white;
+    }
+</style>
+<body>
+<h1>Autor cadastrado!</h1>
+
+<p>Nome:
+    <span th:text="${autor.nome}"></span>
+</p>
+
+<p>Nacionalidade: <span th:text="${autor.nacionalidade}"></span></p>
+
+<a href="/autores">Ver Autores</a>
+</body>
+</html>
