@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        body {
+            background-color: white;
+        }
+    </style>
+    <title>Biblioteca</title>
+</head>
+<body>
+<h1>Cadastro de Autores</h1>
+<form th:object="${autor}" th:action="@{/autores}" method="post">
+    <input type="text" th:field="*{nome}" placeholder="Nome do Autor">
+    <input type="text" th:field="*{nacionalidade}" placeholder="Nacionalidade">
+    <button type="submit">Cadastrar</button>
+</form>
+
+<h1>Lista de Autores</h1>
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Nacionalidade</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="autor : ${autores}">
+            <td th:text="${autor.nome}">a</td>
+            <td th:text="${autor.nacionalidade}">b</td>
+            <td>
+                <a th:href="@{/autores/excluir/{id}(id=${autor.id})}">
+                    Excluir
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<a href="/inicio">Voltar para a página inicial</a>
+</body>
+</html>

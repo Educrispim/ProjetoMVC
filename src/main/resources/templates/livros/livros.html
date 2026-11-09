@@ -12,17 +12,39 @@
     <title>Biblioteca</title>
 </head>
 <body>
-<h1>Lista de Livros</h1>
-<ul>
-    <li th:text="${livro.titulo}"></li>
-</ul>
-
+<h1>Cadastro de Livros</h1>
 <form th:object="${livro}" th:action="@{/livros}" method="post">
     <input type="text" th:field="*{titulo}" placeholder="Título">
     <input type="text" th:field="*{autor}" placeholder="Autor">
     <input type="text" th:field="*{isbn}" placeholder="ISBN">
     <button type="submit">Cadastrar</button>
 </form>
+
+<h1>Lista de Livros</h1>
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>ISBN</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="livro : ${livros}">
+            <td th:text="${livro.titulo}">a</td>
+            <td th:text="${livro.autor}">b</td>
+            <td th:text="${livro.isbn}">c</td>
+            <td>
+                <a th:href="@{/livros/excluir/{id}(id=${livro.id})}">
+                    Excluir
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
 <a href="/inicio">Voltar para a página inicial</a>
 </body>
 </html>
